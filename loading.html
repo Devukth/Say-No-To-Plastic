@@ -1,0 +1,91 @@
+<html lang="en">
+    <head>
+        <title>Document</title>
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/loader.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    </head>
+    <body><center>
+        <div id="calc">
+            <p class="title">Thank you for submitting the survey.</p>
+            <p class="subtitle">We're calculating the suggestions.</p>
+            <div class="loader"></div>
+            <p id="percentage" class="subtitle">0%</p>
+        </div>
+        <div id="report">
+            <p id="amount" style="color: #76c893; font-size: 4rem; font-weight: 700;"></p>
+            <p class="title" style="color: #76c893; font-size: 3rem; font-weight: 500;">Here are our suggestions.</p>
+            <div id="reasonsReport" class="questions">
+                <ul style="color: #76c893;  font-weight: 500;">
+                    <li id="reason1" class="title" style="font-size: 2rem;">Reason 1</li>
+                    <li id="reason2" class="title" style="font-size: 2rem;">Reason 2</li>
+                    <li id="reason3" class="title" style="font-size: 2rem;">Reason 3</li>
+                    <li id="reason4" class="title" style="font-size: 2rem;">Reason 4</li>
+                    <li id="reason5" class="title" style="font-size: 2rem;">Reason 5</li>
+                </ul>
+            </div>
+            <img src="earthSpinning.gif" alt="earthSpinning" style="width: 175px; height: 175px;"><br>
+            <p class="title" style="color: #168aad; font-size: 3rem; font-weight: 500;">Less plastic, it's fantastic!</p>
+        </div>
+        <!-- <table>
+            <tr>
+                <th>Position</th>
+                <th>Name</th>
+                <th>Plastic Usage</th>
+            </tr>
+            <tr>
+                <td id="pos1">1#</td>
+                <td id="name1">No one</td>
+                <td id="kgs1">kgs1</td>
+            </tr>
+            <tr>
+                <td id="pos2">2#</td>
+                <td id="name2">No one</td>
+                <td id="kgs2">kgs2</td>
+            </tr>
+            <tr>
+                <td id="pos3">3#</td>
+                <td id="name3">No one</td>
+                <td id="kgs3">kgs3</td>
+            </tr>
+        </table> -->
+        <script>
+            let reasons = [
+                "Order food from restaurants that use wooden cutlery and non-plastic packaging.",
+                "You could carry your own fabric bag while shopping.",
+                "You could carry your own water bottles from home.",
+                "Use wooden brushes and shop sensibly.",
+                "Shop wisely."
+            ]
+            $(function() {
+                for(let i = 0; i < 5; i++) {
+                    $("#reason" + (i + 1)).text(reasons[i]);
+                }
+            });
+        </script>
+        <script>
+            var per = 0;
+            $(function() {
+                $("#report").hide();
+                for(let i = 0; i < 9; i++) {
+                    setTimeout(function() {
+                        per += 10;
+                        $("#percentage").text(per + "%")
+                    }, Math.random() * 5000);
+                }
+                setTimeout(function() {
+                    per += 10;
+                    $("#percentage").text(per + "%");
+                    $("#calc").hide(1250);
+                    $("#amount").html("You use <span style='font-size: 5rem;'>" + localStorage.getItem("yearlyPlasticUsage") + "</span> kgs of plastic per year");
+                    $("#report").show(1250);
+                }, Math.random() * 5000);
+            });
+        </script>
+    </center></body>
+</html>
