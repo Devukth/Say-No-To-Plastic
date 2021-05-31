@@ -15,19 +15,15 @@ firebase.initializeApp(firebaseConfig);
 
 $(document).ready(function() {
     $("#description").hide();
-    $("#reasons").hide();
-    $("#description").slideDown(1250);
-    $("#showReasons").click(function() {
-        $("#reasons").slideToggle();
-    });
+    $("#description").show(1250);
+    $("#takeQuiz").hide();
 });
 function login(email, password) {
     $(function() {
         firebase.auth().signInWithEmailAndPassword(email, password).then((userCredential) => {
             var user = userCredential.user;
-            setTimeout(function() {
-                window.location.assign("main.html");
-            }, 500);
+            $("#loginsection").slideUp(1250);
+            $("#takeQuiz").show(1250);
         }).catch((error) => {
             var errorMessage = error.message;
             $("#passLength").text(errorMessage);

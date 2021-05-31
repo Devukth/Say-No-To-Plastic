@@ -17,10 +17,16 @@ body {
 .bg-darkgray {
     background: #333333;
     border-bottom: 1px solid #000000;
+    border-radius: 5em 5em 5em 5em;
 }
-.bg-gray {
-    background: #525252;
+.bg-plasticblue {
+    background:  linear-gradient(to bottom right, #168aad, #34a0a4);
     border-bottom: 1px solid #000000;
+    border-radius: 1em 1em 1em 1em;
+}
+.boxglow {
+    box-shadow:
+        0 0 1em .1em #168aad;
 }
 .btn:hover {
     cursor: pointer;
@@ -49,5 +55,5 @@ button:hover {
     cursor: pointer;
 }
 a {
-    color: #52b6b6 !important;
+    color: #38ff7d !important;
 }

@@ -1,8 +1,9 @@
 <html lang="en">
     <head>
-        <title>Document</title>
+        <title>Say No to Plastic</title>
         <link rel="stylesheet" href="styles/style.css">
         <link rel="stylesheet" href="styles/login.css">
+        <link rel="shortcut icon" type="image/png" href="favicon.png">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -11,22 +12,22 @@
 		<script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
         <script src="scripts/login.js" defer></script>
     </head>
-    <body><center>
+    <body style="background: url('https://wallpaperaccess.com/full/2342076.jpg'); background-repeat:round"><center>
         <img src="logo.png" alt="logo" style="width: 325px; height: 175px;">
-        <div id="showReasons" class="bg-darkgray title btn">Click here to show what plastic does.</div>
-        <div id="reasons" class="bg-gray">
-            <ul class="subtitle">
-                <li>Over 300 million tons of plastic are produced every year.</li>
-                <li>At least 8 million tons of plastic end up in the ocean every year.</li>
-            </ul>
-        </div>
-        <p id="description" class="title" style="width: 40ch;">
-            <b>IMPORTANT:</b> 
+        <p id="reasons" class="subtitle bg-plasticblue boxglow" style="width: 120ch; text-align: left;">
+            Over 300 million tons of plastic are produced every year and at least 8 million tons of plastic end up in the ocean every year.
+            Since the 1950s, around 8.3 billion tons of plastic have been produced worldwide and 73% of beach litter worldwide is plastic.
+            In some parts of the world, using plastic is already illegal.
+            Worldwide, about 2 million plastic bags are used every minute and a million plastic bottles are bought around the world every minute.
+            Plastic is killing more than 1.1 million seabirds and animals every year.
+            Over the past 50 years, world plastic production has doubled.
+        </p>
+        <p id="description" class="title bg-plasticblue boxglow" style="width: 50ch; padding: 5px;">
+            <b style="color: red;">IMPORTANT:</b> 
             If you want to reduce plastic impact to our planet, login and click the 'Take the Quiz' button for a quick survey.
         </p>
         <br><br>
-        
-        <section id="loginsection" class="bg-darkgray" style="border-radius: 10px;">
+        <section id="loginsection" class="bg-plasticblue boxglow">
             <p class="title">Login</p>
             <p class="subtitle">Email:</p>
             <input id="email" class="input" type="text">
@@ -36,5 +37,7 @@
             <button id="login" class="btn" onclick="login($('#email').val(), $('#password').val());">Login</button>
             <p class="subtitle">Didn't make an account? <a href="register.html">Click here</a> to register</p>
         </section>
+        <button id="takeQuiz" style="margin-top: 5em;" onclick="window.location.assign('quiz.html');">Take the Quiz</button>
+        <p style="font-size: 5em;"></p>
     </center></body>
 </html>
