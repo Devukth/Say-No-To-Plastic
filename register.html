@@ -18,7 +18,7 @@
             <p class="subtitle">Password:</p>
             <input id="passwordRegister" class="input" type="password">
             <p id="passLength"></p>
-            <button id="register" class="btn" onclick="registerDetails()">Register</button>
+            <button id="register" class="btn" onclick="registerDetails($('#emailRegister').val(), $('#passwordRegister').val())">Register</button>
             <p class="subtitle">Already registered? <a href="index.html">Click here</a> to login</p>
         </section>
     </center></body>

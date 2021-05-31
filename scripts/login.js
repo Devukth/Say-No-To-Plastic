@@ -21,57 +21,16 @@ $(document).ready(function() {
         $("#reasons").slideToggle();
     });
 });
-
-function OtherLogin() {
+function login(email, password) {
     $(function() {
-        newEmail = $("#email").val();
-        newPassword = $("#password").val();
-        for(let i = 0; i < newEmail.length; i++) {
-            newEmail = newEmail.replace(".", " ");
-        }
-        for(let j = 0; j < newPassword.length; j++) {
-            newPassword = newPassword.replace(".", " ");
-        }
-        getEmail();
-        getPassword();
-    });
-}
-OtherLogin();
-
-function login() {
-    $(function() {
-        newEmail = $("#email").val();
-        newPassword = $("#password").val();
-        for(let i = 0; i < newEmail.length; i++) {
-            newEmail = newEmail.replace(".", " ");
-        }
-        for(let j = 0; j < newPassword.length; j++) {
-            newPassword = newPassword.replace(".", " ");
-        }
-        getEmail();
-        getPassword();
-        if(newPassword == password && newEmail == email) {
-            $("#passLength").text("Successfully logged in");
-            localStorage.setItem("email", newEmail);
+        firebase.auth().signInWithEmailAndPassword(email, password).then((userCredential) => {
+            var user = userCredential.user;
             setTimeout(function() {
                 window.location.assign("main.html");
-            }, 1000);
-        } else {
-            $("#passLength").text("Password or email is wrong");
-        }
-    });
-}
-function getPassword() {
-    firebase.database().ref(email + "/password").on("value", (snapshot) => {
-        data = snapshot.val();
-        password = data;
-    });
-}
-function getEmail() {
-    firebase.database().ref("/").on("value", (snapshot) => {
-        snapshot.forEach(function(childSnapshot) {
-            data = childSnapshot.key;
-            email = data;
+            }, 500);
+        }).catch((error) => {
+            var errorMessage = error.message;
+            $("#passLength").text(errorMessage);
         });
     });
 }

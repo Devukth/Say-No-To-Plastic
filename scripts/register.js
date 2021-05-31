@@ -20,22 +20,14 @@ $(document).ready(function() {
     });
 });
 
-function registerDetails() {
-    $(function() {
-        var newEmail = $("#emailRegister").val();
-        var newPassword = $("#passwordRegister").val();
-        for(let i = 0; i < $("#emailRegister").val().length; i++) {
-            newEmail = newEmail.replace(".", " ");
-        }
-        for(let j = 0; j < $("#passwordRegister").val().length; j++) {
-            newPassword = newPassword.replace(".", " ");
-        }
-        firebase.database().ref("/").child(newEmail).set ({
-            password: newPassword
-        });
-        $("#passLength").text("Successfully registered");
+function registerDetails(email, password) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then((userCredential) => {
+        var user = userCredential.user;
         setTimeout(function() {
             window.location.assign("index.html");
-        }, 1000);   
+        }, 500);
+    }).catch((error) => {
+        var errorMessage = error.message;
+        $("#passLength").text(errorMessage);
     });
 }

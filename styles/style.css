@@ -5,15 +5,6 @@ body {
     font-weight: 200;
     color: #ffffff;
 }
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    text-align: center;
-}
-th {
-    width: 25ch;
-    color: #ddd;
-}
 .title {
     font-size: 2rem;
 }
@@ -58,5 +49,5 @@ button:hover {
     cursor: pointer;
 }
 a {
-    color: #52b69a !important;
+    color: #52b6b6 !important;
 }
